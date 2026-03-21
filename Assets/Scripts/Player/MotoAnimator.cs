@@ -18,4 +18,9 @@ public class MotoAnimator : MonoBehaviour
     {
         animator.SetBool("estaMuerto",false);
     }
+
+    public void PlayQuieto()
+    {
+        animator.Play("Esqueleto|Quieto_001");
+    }
 }
