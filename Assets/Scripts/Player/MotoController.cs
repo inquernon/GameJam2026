@@ -34,6 +34,7 @@ public class MotoController : MonoBehaviour
     private bool usarGiroscopio = false;
 
     public float CurrentSpeed => velocidadActual;
+    public bool EstaFrenando {get; private set;}
 
     public void SetLateralInput(float value)
     {
@@ -86,6 +87,9 @@ public class MotoController : MonoBehaviour
         InterpolateInput();
 
         if (Input.GetKeyDown(KeyCode.Space)) TriggerDeath();
+
+//luego hay que agregar el giroscopio tambien para frenar
+        EstaFrenando = Input.GetKey(KeyCode.S);
 
     }
 
