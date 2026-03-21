@@ -1,16 +1,27 @@
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static GameManager Instance {get; private set;}
+    private int score=0;
+    private void Awake() {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    public void AddScore(int puntos)
     {
-        
+        score += puntos;
+        Debug.Log($"Puntaje: {score}");
+        //editar UI
+    }
+    public void OnPlayerDeath()
+    {
+        Debug.Log($"Juego finalizado {score}");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
