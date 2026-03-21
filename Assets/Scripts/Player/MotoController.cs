@@ -24,7 +24,7 @@ public class MotoController : MonoBehaviour
 
     [Tooltip("Angulo neutro del telefono (calibracion)")]
     [SerializeField] private float anguloNeutro=0;
-
+    [SerializeField] private MotoAnimator motoAnimator;
 
     private Rigidbody rb;
     private float velocidadActual;
@@ -50,20 +50,21 @@ public class MotoController : MonoBehaviour
     {
         if(estaMuerto) return;
 
-        estaMuerto=true;
+        estaMuerto = true;
         rb.isKinematic = false;
-
+        motoAnimator?.PlayDeath();
         //vuelo y caida
-        rb.AddForce(transform.forward * velocidadActual + Vector3.up*4f, ForceMode.Impulse);
-        rb.AddTorque(Random.insideUnitSphere *3f, ForceMode.Impulse);
-        //descomentar cuando cree el gamemanager
-        //GameManager.Instance?.OnPlayerDeath();
+        //rb.AddForce(transform.forward * velocidadActual + Vector3.up*4f, ForceMode.Impulse);
+        //rb.AddTorque(Random.insideUnitSphere *3f, ForceMode.Impulse);
+        
+        GameManager.Instance?.OnPlayerDeath();
     }
 
     private void Awake() {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         velocidadActual = velocidadInicial;
+        motoAnimator = GetComponentInChildren<MotoAnimator>();
     }
 
     private void Start()
@@ -83,6 +84,9 @@ public class MotoController : MonoBehaviour
         SetLateralInput(Input.GetAxis("Horizontal"));
         ReadInputGyroscope();
         InterpolateInput();
+
+        if (Input.GetKeyDown(KeyCode.Space)) TriggerDeath();
+
     }
 
     
