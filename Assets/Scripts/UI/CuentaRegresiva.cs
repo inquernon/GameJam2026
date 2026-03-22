@@ -30,7 +30,9 @@ public class CuentaRegresiva : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         textoCuenta.gameObject.SetActive(false);
+        
         motoAnimator.PlayIdle();
+        GameManager.Instance?.IniciarJuego();
         motoController.enabled = true;
     }
 }

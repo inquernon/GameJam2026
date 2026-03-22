@@ -20,9 +20,10 @@ public class FuelSystem : MonoBehaviour
     private void Update()
     {
         if(combustibleActual <= 0) return;
+        if (GameManager.Instance.EstaJugando == false) return;
         ConsumirCombustible();
         if(combustibleActual <= 0)
-        GameManager.Instance?.OnPlayerDeath();
+            GameManager.Instance?.OnPlayerDeath();
     }
     private void ConsumirCombustible()
     {
