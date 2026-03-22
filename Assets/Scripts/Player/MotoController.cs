@@ -13,11 +13,6 @@ public class MotoController : MonoBehaviour
     [Tooltip("Velocidad maxima alcanzable")]
     [SerializeField] private float velocidadMaxima = 30f;
 
-    [Header("Movimiento lateral")]
-    [Tooltip("Velocidad lado a lado")]
-    [SerializeField] private float velocidadLateral = 5f;
-    [SerializeField] private float suavizadoLateral = 8f;
-
     [Header("Giroscopio")]
     [Tooltip("Sensibilidad del giroscopio")]
     [SerializeField] private float sensibilidadGiroscopio = 2f;
@@ -87,14 +82,12 @@ public class MotoController : MonoBehaviour
         ReadInputGyroscope();
         InterpolateInput();
 
-        if (Input.GetKeyDown(KeyCode.Space)) TriggerDeath();
 
-//luego hay que agregar el giroscopio tambien para frenar
-        EstaFrenando = Input.GetKey(KeyCode.S);
+        //luego hay que agregar el giroscopio tambien para frenar
+        EstaFrenando = Input.GetKey(KeyCode.S) || LeerFrenoGiroscopio();
 
     }
 
-    
     private void FixedUpdate()
     {
         if (estaMuerto) {
@@ -143,6 +136,11 @@ public class MotoController : MonoBehaviour
         SetLateralInput(inclinacion*sensibilidadGiroscopio);
     }
 
+    private bool LeerFrenoGiroscopio()
+    {
+        if (!usarGiroscopio) return false;
+        return Input.gyro.gravity.y > 0.5f;
+    }
     //calibracion del angulo nuetro con la posicion actual del telefono
     //llamar al inicio del juego o con un boton de calibrar
     public void CalibrateGyroscope()
