@@ -27,10 +27,12 @@ public class MotoController : MonoBehaviour
     [SerializeField] private MotoAnimator motoAnimator;
 
     private Rigidbody rb;
-    private float velocidadActual;
-    private float inputLateral; //valor suavizado
+    [SerializeField] private float velocidadActual; 
+    private float anguloObjetivo;
+    [SerializeField] private float suavizadoRotacion = 5f;
+    [SerializeField] private float anguloMaximo = 45f;
     private float inputLateralRaw; //valor real recibido
-    private bool estaMuerto = false;
+    [SerializeField] private bool estaMuerto = false;
     private bool usarGiroscopio = false;
 
     public float CurrentSpeed => velocidadActual;
@@ -52,7 +54,7 @@ public class MotoController : MonoBehaviour
         if(estaMuerto) return;
 
         estaMuerto = true;
-        rb.isKinematic = false;
+        rb.linearVelocity = Vector3.zero;
         motoAnimator?.PlayDeath();
         //vuelo y caida
         //rb.AddForce(transform.forward * velocidadActual + Vector3.up*4f, ForceMode.Impulse);
@@ -70,12 +72,11 @@ public class MotoController : MonoBehaviour
 
     private void Start()
     {
-#if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
-        if(SystemInfo.supportsGyroscope){
+        if (SystemInfo.supportsGyroscope)
+        {
             Input.gyro.enabled = true;
             usarGiroscopio = true;
         }
-#endif
     }
 
     private void Update()
@@ -96,10 +97,17 @@ public class MotoController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if(estaMuerto) return;
+        if (estaMuerto) {
+            print("esta muerto");
+            return;
+        }
+        else
+        {
+            Accelerate();
+            ApplyMovement();
+            ApplyRotation();
+        }
 
-        Accelerate();
-        ApplyMovement();
     }
 
     //Movimiento del personaje
@@ -110,13 +118,19 @@ public class MotoController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        Vector3 movimiento = new Vector3(inputLateral*velocidadLateral,0f,velocidadActual);
-        rb.MovePosition(rb.position + movimiento * Time.fixedDeltaTime);
+        if (estaMuerto) return;
+        Vector3 direccion = rb.rotation * Vector3.forward;
+        rb.MovePosition(rb.position + direccion * velocidadActual * Time.fixedDeltaTime);
     }
-
+    private void ApplyRotation()
+    {
+        if (estaMuerto) return;
+        Quaternion rotacionObjetivo = Quaternion.Euler(0f, anguloObjetivo, 0f);
+        rb.rotation = Quaternion.Lerp(rb.rotation, rotacionObjetivo, suavizadoRotacion * Time.fixedDeltaTime);
+    }
     private void InterpolateInput()
     {
-        inputLateral = Mathf.Lerp(inputLateral, inputLateralRaw,suavizadoLateral*Time.deltaTime); 
+        anguloObjetivo = inputLateralRaw * anguloMaximo;
     }
 
     //giroscopio
@@ -135,4 +149,5 @@ public class MotoController : MonoBehaviour
     {
         if(usarGiroscopio) anguloNeutro = Input.gyro.gravity.x;
     }
+   
 }

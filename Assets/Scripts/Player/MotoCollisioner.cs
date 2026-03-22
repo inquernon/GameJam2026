@@ -40,11 +40,5 @@ public class MotoCollisioner : MonoBehaviour
             motoController.TriggerDeath();
         }
     }
-//para los muros laterales de la calle
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Muro"))
-        Debug.Log("Se estrello contra muro");
-        motoController.TriggerDeath();
-    }
+
 }
