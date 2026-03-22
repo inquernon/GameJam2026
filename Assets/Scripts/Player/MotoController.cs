@@ -72,12 +72,11 @@ public class MotoController : MonoBehaviour
 
     private void Start()
     {
-#if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
-        if(SystemInfo.supportsGyroscope){
+        if (SystemInfo.supportsGyroscope)
+        {
             Input.gyro.enabled = true;
             usarGiroscopio = true;
         }
-#endif
     }
 
     private void Update()
@@ -118,19 +117,14 @@ public class MotoController : MonoBehaviour
     }
 
     private void ApplyMovement()
-    {        
+    {
         if (estaMuerto) return;
-
-        Quaternion rotacionObjetivo = Quaternion.Euler(0f, anguloObjetivo, 0f);
-        rb.rotation = Quaternion.Lerp(rb.rotation, rotacionObjetivo, suavizadoRotacion * Time.fixedDeltaTime);
-
-        Vector3 movimiento = rb.rotation * transform.forward * velocidadActual;
-        rb.MovePosition(rb.position + movimiento * Time.fixedDeltaTime);
+        Vector3 direccion = rb.rotation * Vector3.forward;
+        rb.MovePosition(rb.position + direccion * velocidadActual * Time.fixedDeltaTime);
     }
     private void ApplyRotation()
     {
         if (estaMuerto) return;
-        float anguloObjetivo = inputLateralRaw * anguloMaximo;
         Quaternion rotacionObjetivo = Quaternion.Euler(0f, anguloObjetivo, 0f);
         rb.rotation = Quaternion.Lerp(rb.rotation, rotacionObjetivo, suavizadoRotacion * Time.fixedDeltaTime);
     }
