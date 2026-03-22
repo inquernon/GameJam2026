@@ -18,7 +18,7 @@ public class Nodo : MonoBehaviour
     {
         Resetear();
     }
-    void Resetear()
+    public void Resetear()
     {
         for (int i = 0; i < objetos.Length; i++)
         {
