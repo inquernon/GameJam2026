@@ -4,7 +4,7 @@ using TMPro;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textoScore;
+    [SerializeField] private Text textoScore;
    
     public void ActualizarScore(int score)
     {
