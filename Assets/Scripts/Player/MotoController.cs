@@ -6,13 +6,13 @@ public class MotoController : MonoBehaviour
     public static MotoController singleton;
     [Header("velocidad")]
     [Tooltip("Velocidad inicial")]
-    [SerializeField] private float velocidadInicial = 5f;
+    [SerializeField] public float velocidadInicial = 5f;
 
     [Tooltip("Aumento de velocidad por segundo")]
     [SerializeField] private float aceleracion = 0.05f;
 
     [Tooltip("Velocidad maxima alcanzable")]
-    [SerializeField] private float velocidadMaxima = 30f;
+    [SerializeField] public float velocidadMaxima = 30f;
 
     [Header("Giroscopio")]
     [Tooltip("Sensibilidad del giroscopio")]
@@ -23,7 +23,7 @@ public class MotoController : MonoBehaviour
     [SerializeField] private MotoAnimator motoAnimator;
 
     private Rigidbody rb;
-    [SerializeField] private float velocidadActual; 
+    [SerializeField] public float velocidadActual; 
     private float anguloObjetivo;
     [SerializeField] private float suavizadoRotacion = 5f;
     [SerializeField] private float anguloMaximo = 45f;
