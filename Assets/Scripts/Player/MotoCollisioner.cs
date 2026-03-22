@@ -1,36 +1,27 @@
 
 using UnityEngine;
 [RequireComponent(typeof(MotoController))]
-[RequireComponent(typeof(FuelSystem))]
 public class MotoCollisioner : MonoBehaviour
 {
-    [SerializeField] private float gasolinaZombie = 10f;
-    [SerializeField] private int puntosZombie = 100;
     [SerializeField] private float reduccionVelocidadZombie = 2f;
 
-    [SerializeField] private float gasolinaObstaculo = 15f;
-    [SerializeField] private float reduccionVelocidadObstaculo = 5f;
-    [SerializeField] private string tagColisionbuena;
-    [SerializeField] private string tagColisionMala;
+    [SerializeField] private string tagZombie;
+    [SerializeField] private string tagObstaculo;
+
     private MotoController motoController;
-    private FuelSystem fuelSystem;
 
     private void Awake()
     {
-        motoController = GetComponent<MotoController>();
-        fuelSystem = GetComponent<FuelSystem>();    
+        motoController = GetComponent<MotoController>();    
     }
 
-    //triguer con los que atropella
+    //trigger con los que atropella
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(tagColisionbuena))
+        if (other.CompareTag(tagZombie))
         {
-            Debug.Log($"atropello bien y gano {puntosZombie} ademas que la gasolina aumento {gasolinaZombie}");
-            fuelSystem.ImpactoZombie(gasolinaZombie, puntosZombie);
             motoController.ReduceSpeed(reduccionVelocidadZombie);
-        } else if(other.gameObject.CompareTag(tagColisionMala)){
-            //Debug.Log("Se estrello contra muro");
+        } else if(other.gameObject.CompareTag(tagObstaculo)){
             motoController.TriggerDeath();
         }
     }

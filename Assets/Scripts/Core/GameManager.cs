@@ -1,18 +1,19 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
-    [SerializeField] private GameUI gameUI;
-    private int score=0; 
+    
+    [SerializeField] private GameUI gameUI;    
     [SerializeField] private PantallaGameOver pantallaGameOver;
+    
+    private int scoreFinal = 0;
     public bool EstaJugando {  get; private set; } = false;
-    public bool vivo = true;
-    public void IniciarJuego()
+
+    private void Awake()
     {
-        EstaJugando = true;
-    }
-    private void Awake() {
         if (Instance != null)
         {
             DestroyImmediate(gameObject);
@@ -20,18 +21,20 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
     }
-    public void AddScore(int puntos)
+    public void IniciarJuego()
     {
-        score += puntos;
-        Debug.Log($"Puntaje: {score}");
-        gameUI?.ActualizarScore(score);
+        EstaJugando = true;
     }
     public void OnPlayerDeath()
     {
         EstaJugando = false;
-        Debug.Log($"Juego finalizado {score}");
-        pantallaGameOver?.Mostrar(score);
-        vivo = false;
+        StartCoroutine(MostrarGameOverConDelay());
+    }
+
+    private IEnumerator MostrarGameOverConDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        pantallaGameOver?.Mostrar((int)scoreFinal);
     }
 
 }

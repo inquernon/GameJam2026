@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScroeManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
     public Text txtScore;
     public Transform trJugador;
@@ -11,7 +11,7 @@ public class ScroeManager : MonoBehaviour
     {
         int pos = 0;
         hsGuardado = PlayerPrefs.GetInt("score", 0);
-        while (GameManager.Instance.vivo)
+        while (GameManager.Instance.EstaJugando)
         {
             pos = Mathf.FloorToInt(trJugador.position.z);
             yield return new WaitForSeconds(0.2f);
