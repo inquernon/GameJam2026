@@ -2983,7 +2983,7 @@ MonoBehaviour:
   - {fileID: 828115944898172975}
   probabilidadCarros: 0.2
   pivote: {fileID: 3056450316943431151}
-  probabilidadZombies: 0.2
+  probabilidadZombies: 0.246
   zombiePrefab: {fileID: 5201519271311995351, guid: 6cc8f90795524f241b3059e3dce38483, type: 3}
   puntosZombies:
   - {fileID: 8405300120264385549}

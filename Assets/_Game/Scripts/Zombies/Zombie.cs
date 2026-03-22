@@ -4,6 +4,7 @@ public class Zombie : MonoBehaviour
 {
     public RagdollController ragdollController;
     public GameObject sangre;
+    public float desaceleracion=1;
     private void Start()
     {
         Destroy(gameObject,40);
@@ -12,7 +13,8 @@ public class Zombie : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Morir(); 
+            Morir();
+            Debug.LogWarning("MUERTO POR CAUSA DE: " + other.gameObject.name);
         }
     }
 
@@ -20,5 +22,6 @@ public class Zombie : MonoBehaviour
     {
         ragdollController.ActivarMuerte();
         sangre.SetActive(true);
+        MotoController.singleton.ReduceSpeed(desaceleracion);
     }
 }

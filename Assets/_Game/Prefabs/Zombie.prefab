@@ -131,12 +131,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8435521444158776339, guid: 36bdba65ea987da418dc894a7070ec52, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5702243521220462641, guid: 36bdba65ea987da418dc894a7070ec52, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1206874426333947015, guid: 36bdba65ea987da418dc894a7070ec52, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 36bdba65ea987da418dc894a7070ec52, type: 3}
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 1441877184221417581, guid: 36bdba65ea987da418dc894a7070ec52, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4488270959152546719, guid: 36bdba65ea987da418dc894a7070ec52, type: 3}
+      propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -723,6 +739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 5440244036745997356}
   sangre: {fileID: 6844958637185244742}
+  desaceleracion: 0.5
 --- !u!136 &2427065718297181372
 CapsuleCollider:
   m_ObjectHideFlags: 0
