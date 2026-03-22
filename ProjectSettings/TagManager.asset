@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - 0
-  - 1
-  - Muro
+  - Obstacle
+  - Zombie
   layers:
   - Default
   - TransparentFX
