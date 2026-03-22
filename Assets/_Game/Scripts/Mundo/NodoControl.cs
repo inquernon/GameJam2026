@@ -47,6 +47,7 @@ public class NodoControl : MonoBehaviour
         int cual = Random.Range(0, nodos.Count);
         nodos[cual].transform.position = nodosActivos[nodosActivos.Count - 1].pivote.position;
         nodos[cual].gameObject.SetActive(true);
+        nodos[cual].Resetear();
         nodosActivos.Add(nodos[cual]);
         nodos.RemoveAt(cual);
 

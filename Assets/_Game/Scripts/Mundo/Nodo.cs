@@ -9,13 +9,16 @@ public class Nodo : MonoBehaviour
     [Range(0f, 1f)]
     public float probabilidadCarros = 0.2f;
     public Transform pivote;
-
+    [Range(0f, 1f)]
+    public float probabilidadZombies = 0.2f;
+    public GameObject zombiePrefab;
+    public Transform[] puntosZombies;
 
     private void Start()
     {
         Resetear();
     }
-    void Resetear()
+    public void Resetear()
     {
         for (int i = 0; i < objetos.Length; i++)
         {
@@ -26,12 +29,17 @@ public class Nodo : MonoBehaviour
         {
             carros[i].SetActive(Random.Range(0f, 1f) < probabilidadCarros);
         }
+        int r = 0;
+        for (int i = 0; i < puntosZombies.Length; i++)
+        {
+            if(Random.Range(0f, 1f) < probabilidadZombies)
+            {
+                r = Random.Range(0, puntosZombies.Length);
+                Instantiate(zombiePrefab, puntosZombies[r].position, Quaternion.Euler(0,180,0));
+            }
+        }
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Resetear();
-        }
     }
 }

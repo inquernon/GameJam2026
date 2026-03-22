@@ -49,10 +49,6 @@ public class RagdollController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            ActivarMuerte();
-        }
     }
     private void Start()
     {

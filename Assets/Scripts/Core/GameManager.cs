@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private int score=0; 
     [SerializeField] private PantallaGameOver pantallaGameOver;
     public bool EstaJugando {  get; private set; } = false;
+    public bool vivo = true;
     public void IniciarJuego()
     {
         EstaJugando = true;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         EstaJugando = false;
         Debug.Log($"Juego finalizado {score}");
         pantallaGameOver?.Mostrar(score);
+        vivo = false;
     }
 
 }

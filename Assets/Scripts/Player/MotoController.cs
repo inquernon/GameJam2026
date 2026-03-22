@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MotoController : MonoBehaviour
 {
+    public static MotoController singleton;
     [Header("velocidad")]
     [Tooltip("Velocidad inicial")]
     [SerializeField] private float velocidadInicial = 5f;
@@ -63,6 +64,7 @@ public class MotoController : MonoBehaviour
         rb.isKinematic = true;
         velocidadActual = velocidadInicial;
         motoAnimator = GetComponentInChildren<MotoAnimator>();
+        singleton = this;
     }
 
     private void Start()
@@ -119,7 +121,7 @@ public class MotoController : MonoBehaviour
     {
         if (estaMuerto) return;
         Quaternion rotacionObjetivo = Quaternion.Euler(0f, anguloObjetivo, 0f);
-        rb.rotation = Quaternion.Lerp(rb.rotation, rotacionObjetivo, suavizadoRotacion * Time.fixedDeltaTime);
+        rb.rotation = Quaternion.Lerp(rb.rotation, rotacionObjetivo, suavizadoRotacion * velocidadActual * Time.fixedDeltaTime);
     }
     private void InterpolateInput()
     {

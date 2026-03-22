@@ -24,19 +24,13 @@ public class MotoCollisioner : MonoBehaviour
     //triguer con los que atropella
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(tagColisionMala))
-        {
-            fuelSystem.ImpactoObstaculo(gasolinaObstaculo);
-            motoController.ReduceSpeed(reduccionVelocidadObstaculo);
-            Debug.Log($"Choco mal perdio {reduccionVelocidadObstaculo} de velocidad y {gasolinaObstaculo} de gasolina");
-        }
-        else if (other.CompareTag(tagColisionbuena))
+        if (other.CompareTag(tagColisionbuena))
         {
             Debug.Log($"atropello bien y gano {puntosZombie} ademas que la gasolina aumento {gasolinaZombie}");
             fuelSystem.ImpactoZombie(gasolinaZombie, puntosZombie);
             motoController.ReduceSpeed(reduccionVelocidadZombie);
-        } else if(other.gameObject.CompareTag("Muro")){
-            Debug.Log("Se estrello contra muro");
+        } else if(other.gameObject.CompareTag(tagColisionMala)){
+            //Debug.Log("Se estrello contra muro");
             motoController.TriggerDeath();
         }
     }
