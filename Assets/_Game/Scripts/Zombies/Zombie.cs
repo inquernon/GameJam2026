@@ -26,9 +26,11 @@ public class Zombie : MonoBehaviour
 
     public void Morir()
     {
+        transform.parent = null;
         ragdollController.ActivarMuerte();
         sangre.SetActive(true);
         audio.Play();
+        CameraShake.Instance.ShakeCorto();
         MotoController.singleton.ReduceSpeed(desaceleracion);
     }
 }

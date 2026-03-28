@@ -34,8 +34,7 @@ public class Nodo : MonoBehaviour
         {
             if(Random.Range(0f, 1f) < probabilidadZombies)
             {
-                r = Random.Range(0, puntosZombies.Length);
-                Instantiate(zombiePrefab, puntosZombies[r].position, Quaternion.Euler(0,180,0));
+                Instantiate(zombiePrefab, puntosZombies[i].position, Quaternion.Euler(0,180,0));
             }
         }
     }
