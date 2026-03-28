@@ -1866,6 +1866,55 @@ MonoBehaviour:
   delay: 0
   delay2: 1
   cual: 0
+--- !u!1 &667907968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 667907969}
+  - component: {fileID: 667907970}
+  m_Layer: 0
+  m_Name: Vibrecion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &667907969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667907968}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1126277983}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &667907970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667907968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e859b76aa1d69fa4a8f8b34546437086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vibracionActiva: 1
+  duracionPoco: 100
+  duracionMedio: 500
+  duracionAlto: 1000
+  showDebugLogs: 0
 --- !u!1 &707019258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,6 +2770,7 @@ Transform:
   m_Children:
   - {fileID: 1720760494}
   - {fileID: 112187934}
+  - {fileID: 667907969}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1126277984

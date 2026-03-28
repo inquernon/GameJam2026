@@ -86,6 +86,10 @@ public class FinalUIGameOver : MonoBehaviour
         if (scoreManager.scoreActual > 600) esperas /= 2f;
         for (int i = 0; i <= scoreManager.scoreActual; i++)
         {
+            if (scoreManager.scoreActual > 100 && scoreManager.scoreActual - i - 1 > 5) i++;
+            if (scoreManager.scoreActual > 300 && scoreManager.scoreActual - i - 1 > 5) i++;
+            if (scoreManager.scoreActual > 800 && scoreManager.scoreActual - i - 1 > 5) i++;
+            if (scoreManager.scoreActual > 1000 && scoreManager.scoreActual - i - 1 > 5) i++;
             txtScore.text = i.ToString() + "/" + scoreManager.hsGuardado;
             yield return new WaitForSeconds(esperas);
         }

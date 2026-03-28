@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         sonidoChoque.Play();
         StartCoroutine(MostrarGameOverConDelay());
         CameraShake.Instance.ShakeIntermedio();
+        VibrationManager.singleton.VibrarAlto();
     }
 
     private IEnumerator MostrarGameOverConDelay()

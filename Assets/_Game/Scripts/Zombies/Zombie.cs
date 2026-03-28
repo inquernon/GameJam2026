@@ -20,7 +20,6 @@ public class Zombie : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Morir();
-            Debug.LogWarning("MUERTO POR CAUSA DE: " + other.gameObject.name);
         }
     }
 
@@ -31,6 +30,7 @@ public class Zombie : MonoBehaviour
         sangre.SetActive(true);
         audio.Play();
         CameraShake.Instance.ShakeCorto();
+        VibrationManager.singleton.VibrarPoco();
         MotoController.singleton.ReduceSpeed(desaceleracion);
     }
 }
