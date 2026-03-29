@@ -29,7 +29,7 @@ public class VibrationManager : MonoBehaviour
         }
 
         singleton = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         InicializarVibrador();
     }
