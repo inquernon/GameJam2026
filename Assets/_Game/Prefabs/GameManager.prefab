@@ -339,6 +339,7 @@ MonoBehaviour:
   lineaRecord: {fileID: 0}
   txtHScore: {fileID: 0}
   scoreActual: 0
+  bonus: 0
   finalUIGameOver: {fileID: 988966409031406317}
 --- !u!114 &988966409031406317
 MonoBehaviour:
@@ -408,14 +409,31 @@ MonoBehaviour:
     eventoActivar:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: EnemyMagnet, Assembly-CSharp
+        - m_Target: {fileID: 4643958205036241491}
+          m_TargetAssemblyTypeName: GestionCartas, Assembly-CSharp
           m_MethodName: ActivarIman
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - nombre: Bonus
+    material: {fileID: 2100000, guid: 42d52b25c23e6524fa2c17a24338ae1b, type: 2}
+    eventoActivar:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4643958205036241491}
+          m_TargetAssemblyTypeName: GestionCartas, Assembly-CSharp
+          m_MethodName: ActivarMasScore
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 100
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0

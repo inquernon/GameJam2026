@@ -41,6 +41,16 @@ public class GestionCartas : MonoBehaviour
         cartasPoder[cual].eventoActivar.Invoke();
 
     }
+
+    public void ActivarIman()
+    {
+        EnemyMagnet.singleton.ActivarIman();
+    }
+
+    public void ActivarMasScore(int cuanto)
+    {
+        ScoreManager.singleton.AumentarBonus(cuanto);
+    }
 }
 
 [System.Serializable]

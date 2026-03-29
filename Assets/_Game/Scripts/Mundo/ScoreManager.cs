@@ -10,7 +10,15 @@ public class ScoreManager : MonoBehaviour
     public Transform lineaRecord;
     public Text txtHScore;
     public int scoreActual;
+    public int bonus = 0;
     public FinalUIGameOver finalUIGameOver;
+
+    public static ScoreManager singleton;
+
+    private void Awake()
+    {
+        singleton = this;
+    }
     IEnumerator Start()
     {
         int pos = 0;
@@ -24,10 +32,10 @@ public class ScoreManager : MonoBehaviour
         while (GameManager.Instance.EstaJugando)
         {
             pos = Mathf.FloorToInt(trJugador.position.z);
-            scoreActual = pos;
+            scoreActual = pos + bonus;
             yield return new WaitForSeconds(0.2f);
-            txtScore.text = pos.ToString(); // +" \n Best Score: " + hsGuardado;
-            if((lineaRecord.position - trJugador.position).sqrMagnitude < 100)
+            txtScore.text = scoreActual.ToString();
+            if((lineaRecord.position.z < trJugador.position.z))
                 lineaRecord.position = new Vector3(trJugador.position.x,0,hsGuardado);
         }
         finalUIGameOver.ContarFinal();
@@ -36,5 +44,9 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("score", pos);
         }
+    }
+    public void AumentarBonus(int cuanto)
+    {
+        bonus += cuanto;
     }
 }

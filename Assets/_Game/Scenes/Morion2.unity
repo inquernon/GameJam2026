@@ -740,17 +740,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455775047}
   m_CullTransparentMesh: 1
---- !u!114 &1512456100 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1440647763298699996, guid: a4d1ea765a7fc2b4590644a88b38d0e3, type: 3}
-  m_PrefabInstance: {fileID: 8499447444121921072}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b2bad0d42f399428f645e00c66307e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1648229208 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2623673959329610163, guid: a4d1ea765a7fc2b4590644a88b38d0e3, type: 3}
@@ -1120,9 +1109,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1153709910}
     - target: {fileID: 4643958205036241491, guid: 145680cfb320c5c4d8ea92fe74ff8067, type: 3}
-      propertyPath: cartasPoder.Array.data[0].eventoActivar.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1512456100}
+      propertyPath: zombiesPorCarta
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4729296413562916199, guid: 145680cfb320c5c4d8ea92fe74ff8067, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.59139246
