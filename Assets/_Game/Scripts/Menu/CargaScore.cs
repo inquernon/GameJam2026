@@ -6,7 +6,7 @@ public class CargaScore : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        textMeshProUGUI.text = PlayerPrefs.GetInt("score", 0).ToString();
+        textMeshProUGUI.text = "Record: " + PlayerPrefs.GetInt("score", 0).ToString();
     }
 
     // Update is called once per frame

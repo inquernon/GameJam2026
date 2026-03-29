@@ -14,52 +14,53 @@ public class MotoController : MonoBehaviour
     [Tooltip("Velocidad maxima alcanzable")]
     [SerializeField] public float velocidadMaxima = 30f;
 
-    [Header("Giroscopio")]
-    [Tooltip("Sensibilidad del giroscopio")]
-    [SerializeField] private float sensibilidadGiroscopio = 2f;
+    [Header("Acelerometro")]
+    [Tooltip("Sensibilidad del acelerometro")]
+    [SerializeField] private float sensibilidadAcelerometro = 2f;
 
     [Tooltip("Angulo neutro del telefono (calibracion)")]
-    [SerializeField] private float anguloNeutro=0;
+    [SerializeField] private float anguloNeutro = 0;
+
     [SerializeField] private MotoAnimator motoAnimator;
 
     private Rigidbody rb;
-    [SerializeField] public float velocidadActual; 
+    [SerializeField] public float velocidadActual;
     private float anguloObjetivo;
     [SerializeField] private float suavizadoRotacion = 5f;
     [SerializeField] private float anguloMaximo = 45f;
     private float inputLateralRaw; //valor real recibido
-    [SerializeField] private bool estaMuerto = false;
-    private bool usarGiroscopio = false;
+    [SerializeField] public bool estaMuerto = false;
+    private bool usarAcelerometro = false;
 
     public float CurrentSpeed => velocidadActual;
-    public bool EstaFrenando {get; private set;}
+    public bool EstaFrenando { get; private set; }
+
+    public GameObject particulasMuerte;
 
     public void SetLateralInput(float value)
     {
-        inputLateralRaw = Mathf.Clamp(value, -1f,1f);
+        inputLateralRaw = Mathf.Clamp(value, -1f, 1f);
     }
 
     //metodo para reducir la velocidad
     public void ReduceSpeed(float cant)
     {
-        velocidadActual = Mathf.Max(velocidadInicial,velocidadActual-cant);
+        velocidadActual = Mathf.Max(velocidadInicial, velocidadActual - cant);
     }
-    
+
     public void TriggerDeath()
     {
-        if(estaMuerto) return;
-
+        if (estaMuerto) return;
+        particulasMuerte.SetActive(true);
         estaMuerto = true;
         rb.linearVelocity = Vector3.zero;
         motoAnimator?.PlayDeath();
-        //vuelo y caida
-        //rb.AddForce(transform.forward * velocidadActual + Vector3.up*4f, ForceMode.Impulse);
-        //rb.AddTorque(Random.insideUnitSphere *3f, ForceMode.Impulse);
-        
+
         GameManager.Instance?.OnPlayerDeath();
     }
 
-    private void Awake() {
+    private void Awake()
+    {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         velocidadActual = velocidadInicial;
@@ -69,31 +70,38 @@ public class MotoController : MonoBehaviour
 
     private void Start()
     {
-        if (SystemInfo.supportsGyroscope)
+        // Verificar si el dispositivo soporta acelerometro
+        if (SystemInfo.supportsAccelerometer)
         {
-            Input.gyro.enabled = true;
-            usarGiroscopio = true;
+            usarAcelerometro = true;
+            //Debug.Log("Acelerometro activado");
+        }
+        else
+        {
+            //Debug.Log("Acelerometro no disponible, usando teclado");
         }
     }
 
     private void Update()
     {
-        if(estaMuerto) return;
-    // Input de teclado para probar en editor (A/D o flechas)
+        if (estaMuerto) return;
+
+        // Input de teclado para probar en editor (A/D o flechas)
         SetLateralInput(Input.GetAxis("Horizontal"));
-        ReadInputGyroscope();
+
+        // Leer acelerometro
+        ReadInputAccelerometer();
+
         InterpolateInput();
 
-
-        //luego hay que agregar el giroscopio tambien para frenar
-        EstaFrenando = Input.GetKey(KeyCode.S) || LeerFrenoGiroscopio();
-
+        // Freno
+        EstaFrenando = Input.GetKey(KeyCode.S) || LeerFrenoAcelerometro();
     }
 
     private void FixedUpdate()
     {
-        if (estaMuerto) {
-            print("esta muerto");
+        if (estaMuerto)
+        {
             return;
         }
         else
@@ -102,7 +110,6 @@ public class MotoController : MonoBehaviour
             ApplyMovement();
             ApplyRotation();
         }
-
     }
 
     //Movimiento del personaje
@@ -117,37 +124,49 @@ public class MotoController : MonoBehaviour
         Vector3 direccion = rb.rotation * Vector3.forward;
         rb.MovePosition(rb.position + direccion * velocidadActual * Time.fixedDeltaTime);
     }
+
     private void ApplyRotation()
     {
         if (estaMuerto) return;
         Quaternion rotacionObjetivo = Quaternion.Euler(0f, anguloObjetivo, 0f);
         rb.rotation = Quaternion.Lerp(rb.rotation, rotacionObjetivo, suavizadoRotacion * velocidadActual * Time.fixedDeltaTime);
     }
+
     private void InterpolateInput()
     {
         anguloObjetivo = inputLateralRaw * anguloMaximo;
     }
 
-    //giroscopio
-    private void ReadInputGyroscope()
+    //==================== ACELEROMETRO ====================
+    private void ReadInputAccelerometer()
     {
-        if(!usarGiroscopio) return;
+        if (!usarAcelerometro) return;
 
-        //gravity.x para tener la inclinacion lateral del telefono
-        float inclinacion = Input.gyro.gravity.x - anguloNeutro;
-        SetLateralInput(inclinacion*sensibilidadGiroscopio);
+        // Input.acceleration devuelve la aceleracion en los 3 ejes
+        // .x es la inclinacion lateral
+        Vector3 accel = Input.acceleration;
+
+        float inclinacion = accel.x - anguloNeutro;
+        SetLateralInput(inclinacion * sensibilidadAcelerometro);
     }
 
-    private bool LeerFrenoGiroscopio()
+    private bool LeerFrenoAcelerometro()
     {
-        if (!usarGiroscopio) return false;
-        return Input.gyro.gravity.y > 0.5f;
+        if (!usarAcelerometro) return false;
+
+        // Si el telefono apunta hacia arriba (acceleration.y positivo)
+        return Input.acceleration.y > 0.5f;
     }
-    //calibracion del angulo nuetro con la posicion actual del telefono
-    //llamar al inicio del juego o con un boton de calibrar
-    public void CalibrateGyroscope()
+
+    //==================== CALIBRACION ====================
+    // Calibracion del angulo neutro con la posicion actual del telefono
+    // Llamar al inicio del juego o con un boton de calibrar
+    public void CalibrateAccelerometer()
     {
-        if(usarGiroscopio) anguloNeutro = Input.gyro.gravity.x;
+        if (usarAcelerometro)
+        {
+            anguloNeutro = Input.acceleration.x;
+        }
     }
-   
+
 }

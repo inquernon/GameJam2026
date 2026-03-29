@@ -880,7 +880,7 @@ MonoBehaviour:
   deathForce: {x: 0, y: 30, z: 20}
   forceMode: 2
   forceTargetBone: Hips
-  showDebugLogs: 1
+  showDebugLogs: 0
 --- !u!114 &4989233952900148757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,7 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 5440244036745997356}
   sangre: {fileID: 6844958637185244742}
-  desaceleracion: 0.5
+  desaceleracion: 0.2
   objetosDesactivables:
   - {fileID: 1191920365330579230}
   - {fileID: 3676745544428242624}

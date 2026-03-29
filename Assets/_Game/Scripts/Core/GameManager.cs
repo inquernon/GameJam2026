@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private GameUI gameUI;    
     [SerializeField] private PantallaGameOver pantallaGameOver;
-    
+    public AudioSource sonidoChoque;
     private int scoreFinal = 0;
     public bool EstaJugando {  get; private set; } = false;
 
@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
     }
+    private void Start()
+    {
+        ScreenFader.Instance?.FadeIn();
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
     public void IniciarJuego()
     {
         EstaJugando = true;
@@ -28,7 +33,10 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         EstaJugando = false;
+        sonidoChoque.Play();
         StartCoroutine(MostrarGameOverConDelay());
+        CameraShake.Instance.ShakeIntermedio();
+        VibrationManager.singleton.VibrarAlto();
     }
 
     private IEnumerator MostrarGameOverConDelay()

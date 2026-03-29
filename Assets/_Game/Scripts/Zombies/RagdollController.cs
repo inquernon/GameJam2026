@@ -89,7 +89,7 @@ public class RagdollController : MonoBehaviour
 
         if (showDebugLogs)
         {
-            Debug.Log($"Ragdoll configurado: {ragdollRigidbodies.Count} Rigidbodies, {ragdollColliders.Count} Colliders");
+            //Debug.Log($"Ragdoll configurado: {ragdollRigidbodies.Count} Rigidbodies, {ragdollColliders.Count} Colliders");
         }
     }
 
