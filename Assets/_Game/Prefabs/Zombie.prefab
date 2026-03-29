@@ -895,7 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 5440244036745997356}
   sangre: {fileID: 6844958637185244742}
-  desaceleracion: 0.2
+  desaceleracion: 1
   objetosDesactivables:
   - {fileID: 1191920365330579230}
   - {fileID: 3676745544428242624}

@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
         int pos = 0;
         hsGuardado = PlayerPrefs.GetInt("score", 0);
         //lineaRecord.Translate(0, hsGuardado, 0);
-        lineaRecord.position = new Vector3(trJugador.position.x,0,hsGuardado);
+        lineaRecord.position = new Vector3(0,0,hsGuardado);
         txtHScore.text = hsGuardado.ToString();
         yield return new WaitUntil(() => GameManager.Instance.EstaJugando);
         
@@ -27,7 +27,8 @@ public class ScoreManager : MonoBehaviour
             scoreActual = pos;
             yield return new WaitForSeconds(0.2f);
             txtScore.text = pos.ToString(); // +" \n Best Score: " + hsGuardado;
-            lineaRecord.position = new Vector3(trJugador.position.x,0,hsGuardado);
+            if((lineaRecord.position - trJugador.position).sqrMagnitude < 100)
+                lineaRecord.position = new Vector3(trJugador.position.x,0,hsGuardado);
         }
         finalUIGameOver.ContarFinal();
 
