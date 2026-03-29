@@ -25,6 +25,7 @@ public class GestionCartas : MonoBehaviour
             zombiesActual = 0;
             GanarCarta();
         }
+        GameUI.singleton.ActualizarZombies(zombiesActual,zombiesPorCarta);
     }
 
     public void GanarCarta()

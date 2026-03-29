@@ -1110,7 +1110,7 @@ PrefabInstance:
       objectReference: {fileID: 1153709910}
     - target: {fileID: 4643958205036241491, guid: 145680cfb320c5c4d8ea92fe74ff8067, type: 3}
       propertyPath: zombiesPorCarta
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4729296413562916199, guid: 145680cfb320c5c4d8ea92fe74ff8067, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1440,6 +1440,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 329463660865521455, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 329463660865521455, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 329463660865521455, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 329463660865521455, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 9484f2053ebe64b46a945039e0956a88, type: 3}
     - target: {fileID: 846333752256951584, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
       propertyPath: motoAnimator
       value: 
@@ -1448,6 +1464,22 @@ PrefabInstance:
       propertyPath: motoController
       value: 
       objectReference: {fileID: 1648229208}
+    - target: {fileID: 1037253795275988576, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037253795275988576, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037253795275988576, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037253795275988576, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1862738845062400202, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
       propertyPath: motoController
       value: 
@@ -1460,6 +1492,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1126277986}
+    - target: {fileID: 3214711268364795794, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214711268364795794, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214711268364795794, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214711268364795794, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3464675719536097390, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1548,6 +1596,22 @@ PrefabInstance:
       propertyPath: motoController
       value: 
       objectReference: {fileID: 1648229208}
+    - target: {fileID: 9141721762340527315, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141721762340527315, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141721762340527315, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141721762340527315, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 9484f2053ebe64b46a945039e0956a88, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

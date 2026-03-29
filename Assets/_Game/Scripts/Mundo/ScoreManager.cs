@@ -34,7 +34,7 @@ public class ScoreManager : MonoBehaviour
             pos = Mathf.FloorToInt(trJugador.position.z);
             scoreActual = pos + bonus;
             yield return new WaitForSeconds(0.2f);
-            txtScore.text = scoreActual.ToString();
+            txtScore.text = scoreActual.ToString() + " m";
             if((lineaRecord.position.z < trJugador.position.z))
                 lineaRecord.position = new Vector3(trJugador.position.x,0,hsGuardado);
         }
