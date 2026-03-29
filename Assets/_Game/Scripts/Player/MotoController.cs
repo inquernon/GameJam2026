@@ -29,7 +29,7 @@ public class MotoController : MonoBehaviour
     [SerializeField] private float suavizadoRotacion = 5f;
     [SerializeField] private float anguloMaximo = 45f;
     private float inputLateralRaw; //valor real recibido
-    [SerializeField] private bool estaMuerto = false;
+    [SerializeField] public bool estaMuerto = false;
     private bool usarAcelerometro = false;
 
     public float CurrentSpeed => velocidadActual;
