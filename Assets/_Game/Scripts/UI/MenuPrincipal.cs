@@ -11,6 +11,11 @@ public class MenuPrincipal : MonoBehaviour
     public void Jugar()
     {
         StartCoroutine(InicioJugar());
+        ScreenFader.Instance.FadeIn();
+    }
+    public void Menu()
+    {
+        StartCoroutine(InicioMenu());
     }
     public IEnumerator InicioJugar()
     {
@@ -20,6 +25,13 @@ public class MenuPrincipal : MonoBehaviour
         SceneManager.LoadScene(cual);
     }
 
+    public IEnumerator InicioMenu()
+    {
+        yield return new WaitForSeconds(delay);
+        ScreenFader.Instance?.FadeOut();
+        yield return new WaitForSeconds(delay2);
+        SceneManager.LoadScene("Menu");
+    }
     public void Salir()
     {
         Application.Quit();

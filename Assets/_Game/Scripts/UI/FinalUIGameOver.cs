@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalUIGameOver : MonoBehaviour
@@ -12,6 +13,7 @@ public class FinalUIGameOver : MonoBehaviour
     public LeaderboardManager leaderboardManager;
     public InputField inputScoreGlobal;
     string idUSuaruio;
+    public Button btnSubmitScore;
     void Start()
     {
         leaderboardDisplay.GetLeaderboard();
@@ -43,7 +45,16 @@ public class FinalUIGameOver : MonoBehaviour
             scoreManager.scoreActual
         );
 
-        if(inputScoreGlobal.text.Length > 2) PlayerPrefs.SetString("nombre", inputScoreGlobal.text);
+        if(inputScoreGlobal.text.Length > 2) 
+            PlayerPrefs.SetString("nombre", inputScoreGlobal.text);
+        ScreenFader.Instance.FadeOut();
+        Invoke("CargarEscenaRecord", 2);
+    }
+
+    void CargarEscenaRecord()
+    {
+        ScreenFader.Instance.FadeIn();
+        SceneManager.LoadScene("RankingGlobal");
     }
 
     public IEnumerator VerificarTablaGlobal()

@@ -1568,6 +1568,10 @@ PrefabInstance:
       propertyPath: motoController
       value: 
       objectReference: {fileID: 1648229208}
+    - target: {fileID: 6397852771356624828, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
