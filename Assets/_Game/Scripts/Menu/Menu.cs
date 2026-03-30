@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Menu : MonoBehaviour
 {
@@ -47,6 +48,11 @@ public class Menu : MonoBehaviour
         zombieNator = Instantiate(zombiePR, persinaje.transform.position + Vector3.forward*4, Quaternion.Euler(0,180,0));
         irFinal = true;
         Invoke("Fadear", 2);
+    }
+
+    public void ResetearScore()
+    {
+        PlayerPrefs.SetInt("score", 0);
     }
     public void Fadear()
     {

@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     public int scoreActual;
     public int bonus = 0;
     public FinalUIGameOver finalUIGameOver;
+    public bool recordPersonal = false, recordGlobal = false;
 
     public static ScoreManager singleton;
 
@@ -42,6 +43,7 @@ public class ScoreManager : MonoBehaviour
 
         if (pos > hsGuardado )
         {
+            recordPersonal = true;
             PlayerPrefs.SetInt("score", pos);
         }
     }

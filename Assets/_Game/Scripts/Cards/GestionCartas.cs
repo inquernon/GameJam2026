@@ -16,7 +16,10 @@ public class GestionCartas : MonoBehaviour
     {
         singleton = this;
     }
-
+    private void Start()
+    {
+        GameUI.singleton.ActualizarZombies(zombiesActual, zombiesPorCarta);
+    }
     public void MurioZombie()
     {
         zombiesActual++;
@@ -51,6 +54,11 @@ public class GestionCartas : MonoBehaviour
     public void ActivarMasScore(int cuanto)
     {
         ScoreManager.singleton.AumentarBonus(cuanto);
+    }
+
+    public void ActivarReductorVelocidad()
+    {
+        MotoController.singleton.ReduceSpeed(500);
     }
 }
 

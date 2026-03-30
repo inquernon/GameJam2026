@@ -866,7 +866,7 @@ AudioSource:
   m_GameObject: {fileID: 2137968493}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 108484435436894407, guid: 41df157a8387c4c4a97e8d03282ddc47, type: 2}
   m_audioClip: {fileID: 8300000, guid: 398e4a9333cea864fb49c14917818b55, type: 3}
   m_Resource: {fileID: 8300000, guid: 398e4a9333cea864fb49c14917818b55, type: 3}
   m_PlayOnAwake: 1
@@ -1160,6 +1160,10 @@ PrefabInstance:
       propertyPath: pantallaGameOver
       value: 
       objectReference: {fileID: 632102911}
+    - target: {fileID: 7608030692138479803, guid: 145680cfb320c5c4d8ea92fe74ff8067, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3579426727970768525, guid: 41df157a8387c4c4a97e8d03282ddc47, type: 2}
     - target: {fileID: 9152786637664672006, guid: 145680cfb320c5c4d8ea92fe74ff8067, type: 3}
       propertyPath: jugador
       value: 
@@ -1383,6 +1387,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 700021878560477006, guid: a4d1ea765a7fc2b4590644a88b38d0e3, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3579426727970768525, guid: 41df157a8387c4c4a97e8d03282ddc47, type: 2}
+    - target: {fileID: 1356175119147400153, guid: a4d1ea765a7fc2b4590644a88b38d0e3, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3579426727970768525, guid: 41df157a8387c4c4a97e8d03282ddc47, type: 2}
+    - target: {fileID: 2351693296259772981, guid: a4d1ea765a7fc2b4590644a88b38d0e3, type: 3}
+      propertyPath: Priority
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351693296259772981, guid: a4d1ea765a7fc2b4590644a88b38d0e3, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3579426727970768525, guid: 41df157a8387c4c4a97e8d03282ddc47, type: 2}
     - target: {fileID: 4728255871037542445, guid: a4d1ea765a7fc2b4590644a88b38d0e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1440,22 +1460,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 329463660865521455, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 329463660865521455, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 329463660865521455, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 329463660865521455, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 9484f2053ebe64b46a945039e0956a88, type: 3}
     - target: {fileID: 846333752256951584, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
       propertyPath: motoAnimator
       value: 
@@ -1464,22 +1468,6 @@ PrefabInstance:
       propertyPath: motoController
       value: 
       objectReference: {fileID: 1648229208}
-    - target: {fileID: 1037253795275988576, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_EffectColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037253795275988576, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_EffectColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037253795275988576, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_EffectColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037253795275988576, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_EffectColor.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1862738845062400202, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
       propertyPath: motoController
       value: 
@@ -1492,22 +1480,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1126277986}
-    - target: {fileID: 3214711268364795794, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_EffectColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3214711268364795794, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_EffectColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3214711268364795794, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_EffectColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3214711268364795794, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_EffectColor.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3464675719536097390, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1596,22 +1568,6 @@ PrefabInstance:
       propertyPath: motoController
       value: 
       objectReference: {fileID: 1648229208}
-    - target: {fileID: 9141721762340527315, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141721762340527315, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141721762340527315, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141721762340527315, guid: 4325344de097cfc41a94b4be02ecdd7b, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 9484f2053ebe64b46a945039e0956a88, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

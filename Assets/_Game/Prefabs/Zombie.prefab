@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7880429795877395399}
   - component: {fileID: 5281454371866491165}
   m_Layer: 0
-  m_Name: dragon-studio-car-crash-sound-376882
+  m_Name: Sonido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 2979300945333324145}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3579426727970768525, guid: 41df157a8387c4c4a97e8d03282ddc47, type: 2}
   m_audioClip: {fileID: 8300000, guid: 918b532e2f9ce7446b44f5a2897c032b, type: 3}
   m_Resource: {fileID: 8300000, guid: 918b532e2f9ce7446b44f5a2897c032b, type: 3}
   m_PlayOnAwake: 0
