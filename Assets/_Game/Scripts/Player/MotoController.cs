@@ -6,13 +6,13 @@ public class MotoController : MonoBehaviour
     public static MotoController singleton;
     [Header("velocidad")]
     [Tooltip("Velocidad inicial")]
-    [SerializeField] public float velocidadInicial = 5f;
+    [SerializeField] private float velocidadInicial = 5f;
 
     [Tooltip("Aumento de velocidad por segundo")]
     [SerializeField] private float aceleracion = 0.05f;
 
     [Tooltip("Velocidad maxima alcanzable")]
-    [SerializeField] public float velocidadMaxima = 30f;
+    [SerializeField] private float velocidadMaxima = 30f;
 
     [Header("Acelerometro")]
     [Tooltip("Sensibilidad del acelerometro")]
@@ -34,7 +34,8 @@ public class MotoController : MonoBehaviour
 
     public float CurrentSpeed => velocidadActual;
     public bool EstaFrenando { get; private set; }
-
+    public float VelocidadInicial { get; set; }
+    public float VelocidadMaxima { get; set; }
     public GameObject particulasMuerte;
 
     public void SetLateralInput(float value)
@@ -47,8 +48,7 @@ public class MotoController : MonoBehaviour
     {
         velocidadActual = Mathf.Max(velocidadInicial, velocidadActual - cant);
     }
-
-    public void TriggerDeath()
+public void TriggerDeath()
     {
         if (estaMuerto) return;
         particulasMuerte.SetActive(true);
@@ -74,11 +74,6 @@ public class MotoController : MonoBehaviour
         if (SystemInfo.supportsAccelerometer)
         {
             usarAcelerometro = true;
-            //Debug.Log("Acelerometro activado");
-        }
-        else
-        {
-            //Debug.Log("Acelerometro no disponible, usando teclado");
         }
     }
 
@@ -167,6 +162,16 @@ public class MotoController : MonoBehaviour
         {
             anguloNeutro = Input.acceleration.x;
         }
+    }
+
+    //modificacion de la velocidad maxima, para usar en el sistema de dificultad progresiva
+    public void IncreaseDifficulty(float aumento)
+    {
+        velocidadInicial += aumento;
+        velocidadMaxima += aumento;
+
+        // Asegurarse que la velocidad actual no quede por debajo del nuevo piso
+        velocidadActual = Mathf.Max(velocidadActual, velocidadInicial);
     }
 
 }

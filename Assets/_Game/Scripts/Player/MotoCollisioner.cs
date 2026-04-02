@@ -18,10 +18,7 @@ public class MotoCollisioner : MonoBehaviour
     //trigger con los que atropella
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(tagZombie))
-        {
-            motoController.ReduceSpeed(reduccionVelocidadZombie);
-        } else if(other.gameObject.CompareTag(tagObstaculo)){
+        if(other.gameObject.CompareTag(tagObstaculo)){
             motoController.TriggerDeath();
         }
     }

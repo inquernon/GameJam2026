@@ -17,7 +17,7 @@ public class Velocimetro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t = (MotoController.singleton.velocidadActual - MotoController.singleton.velocidadInicial) / (MotoController.singleton.velocidadMaxima- MotoController.singleton.velocidadInicial);
+        t = (MotoController.singleton.velocidadActual - MotoController.singleton.VelocidadInicial) / (MotoController.singleton.VelocidadMaxima- MotoController.singleton.VelocidadInicial);
         transform.localEulerAngles = Vector3.forward * Mathf.Lerp(angulos.x,angulos.y,t);
         if(audioSource != null )
         {
