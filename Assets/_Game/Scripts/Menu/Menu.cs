@@ -48,6 +48,11 @@ public class Menu : MonoBehaviour
         irFinal = true;
         Invoke("Fadear", 2);
     }
+
+    public void ResetearScore()
+    {
+        PlayerPrefs.SetInt("score", 0);
+    }
     public void Fadear()
     {
         ScreenFader.Instance.FadeOut();

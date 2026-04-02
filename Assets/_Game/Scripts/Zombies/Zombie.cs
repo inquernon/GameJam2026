@@ -32,5 +32,6 @@ public class Zombie : MonoBehaviour
         CameraShake.Instance.ShakeCorto();
         VibrationManager.singleton.VibrarPoco();
         MotoController.singleton.ReduceSpeed(desaceleracion);
+        GestionCartas.singleton.MurioZombie();
     }
 }

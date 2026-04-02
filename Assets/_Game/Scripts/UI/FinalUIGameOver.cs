@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalUIGameOver : MonoBehaviour
@@ -12,6 +13,7 @@ public class FinalUIGameOver : MonoBehaviour
     public LeaderboardManager leaderboardManager;
     public InputField inputScoreGlobal;
     string idUSuaruio;
+    public Button btnSubmitScore;
     void Start()
     {
         leaderboardDisplay.GetLeaderboard();
@@ -43,12 +45,21 @@ public class FinalUIGameOver : MonoBehaviour
             scoreManager.scoreActual
         );
 
-        if(inputScoreGlobal.text.Length > 2) PlayerPrefs.SetString("nombre", inputScoreGlobal.text);
+        if(inputScoreGlobal.text.Length > 2) 
+            PlayerPrefs.SetString("nombre", inputScoreGlobal.text);
+        ScreenFader.Instance.FadeOut();
+        Invoke("CargarEscenaRecord", 2);
+    }
+
+    void CargarEscenaRecord()
+    {
+        ScreenFader.Instance.FadeIn();
+        SceneManager.LoadScene("RankingGlobal");
     }
 
     public IEnumerator VerificarTablaGlobal()
     {
-        float tiempoEsperaFinal = Time.time + 5f;
+        float tiempoEsperaFinal = Time.time + 2f;
         inputScoreGlobal.gameObject.SetActive(false);
         while (Time.time < tiempoEsperaFinal || leaderboardDisplay.cargando)
         {
@@ -63,12 +74,14 @@ public class FinalUIGameOver : MonoBehaviour
             if(leaderboardDisplay.total.leaderboard.Count < 20)
             {
                 inputScoreGlobal.gameObject.SetActive(true);
+                scoreManager.recordGlobal = true;
             }
             else
             {
                 if (leaderboardDisplay.total.leaderboard[leaderboardDisplay.total.leaderboard.Count-1].score <=scoreManager.scoreActual)
                 {
                     inputScoreGlobal.gameObject.SetActive(true);
+                    scoreManager.recordGlobal = true;
                 }
                 else
                 {
@@ -90,7 +103,7 @@ public class FinalUIGameOver : MonoBehaviour
             if (scoreManager.scoreActual > 300 && scoreManager.scoreActual - i - 1 > 5) i++;
             if (scoreManager.scoreActual > 800 && scoreManager.scoreActual - i - 1 > 5) i++;
             if (scoreManager.scoreActual > 1000 && scoreManager.scoreActual - i - 1 > 5) i++;
-            txtScore.text = i.ToString() + "/" + scoreManager.hsGuardado;
+            txtScore.text = i.ToString() + " / " + scoreManager.hsGuardado;
             yield return new WaitForSeconds(esperas);
         }
     }
